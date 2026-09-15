@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jet VPN — Админ-панель</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body{display:flex; min-height:100vh;}
+  #login-screen{width:100%; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px;}
+  .login-card{width:100%; max-width:380px; border-radius:var(--radius-lg); padding:34px; animation:card-in .6s cubic-bezier(0.22,1,0.36,1) both;}
+  @keyframes card-in{ from{opacity:0; transform:translateY(20px) scale(0.97);} to{opacity:1; transform:translateY(0) scale(1);} }
+  .ticket-row{animation:row-in .35s cubic-bezier(0.22,1,0.36,1) both;}
+  @keyframes row-in{ from{opacity:0; transform:translateX(-8px);} to{opacity:1; transform:translateX(0);} }
+  .ticket-row.flash{ animation:row-flash 1s ease; }
+  @keyframes row-flash{ 0%{ background:rgba(124,159,255,0.28); } 100%{ background:transparent; } }
+  .nav-item{transition:.2s, transform .15s var(--ease);}
+  .nav-item:active{transform:scale(0.97);}
+  .login-card h1{font-size:20px; margin:0 0 4px; font-weight:640;}
+  .login-card p{font-size:13.5px; color:var(--text-dim); margin:0 0 24px;}
+  .login-card .btn{width:100%; margin-top:8px; padding:13px;}
+  .err{color:#ff8a8a; font-size:13px; margin:-8px 0 12px; display:none;}
+
+  #app-screen{display:none; width:100%; min-height:100vh;}
+  .sidebar{width:230px; flex-shrink:0; padding:22px 14px; display:flex; flex-direction:column; gap:6px; border-right:1px solid var(--glass-border);}
+  .sidebar h1{font-size:16px; padding:0 10px 18px; margin:0; font-weight:650;}
+  .nav-item{padding:11px 14px; border-radius:12px; font-size:14px; color:var(--text-dim); cursor:pointer; transition:.2s; display:flex; align-items:center; gap:10px;}
+  .nav-item:hover{background:rgba(255,255,255,0.05); color:var(--text);}
+  .nav-item.active{background:var(--glass-strong); color:var(--text);}
+  .sidebar .spacer{flex:1;}
+  .logout{padding:11px 14px; border-radius:12px; font-size:13.5px; color:var(--text-dim); cursor:pointer;}
+  .logout:hover{color:#ff8a8a;}
+
+  .main{flex:1; padding:28px 32px; overflow-y:auto; height:100vh;}
+  .main h2{font-size:22px; margin:0 0 22px; font-weight:640;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  table{width:100%; border-collapse:collapse; font-size:13.5px;}
+  th{text-align:left; color:var(--text-dim); font-weight:600; padding:10px 12px; border-bottom:1px solid var(--glass-border); font-size:12.5px; text-transform:none;}
+  td{padding:12px; border-bottom:1px solid rgba(255,255,255,0.05);}
+  .table-wrap{border-radius:var(--radius-md); overflow:hidden;}
+  .pill{font-size:11.5px; padding:4px 10px; border-radius:100px; display:inline-block;}
+  .pill.open{background:rgba(110,231,168,0.15); color:var(--ok);}
+  .pill.closed{background:rgba(255,255,255,0.08); color:var(--text-dim);}
+
+  .tickets-layout{display:flex; gap:18px; height:calc(100vh - 140px);}
+  .ticket-list{width:280px; flex-shrink:0; border-radius:var(--radius-md); overflow-y:auto;}
+  .ticket-row{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:.2s;}
+  .ticket-row:hover, .ticket-row.active{background:rgba(255,255,255,0.06);}
+  .ticket-row b{font-size:13.5px; display:block; margin-bottom:3px;}
+  .ticket-row span{font-size:12px; color:var(--text-dim);}
+  .chat-panel{flex:1; border-radius:var(--radius-md); display:flex; flex-direction:column;}
+  .chat-panel-head{padding:16px 20px; border-bottom:1px solid var(--glass-border); display:flex; justify-content:space-between; align-items:center;}
+  .chat-panel-body{flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:10px;}
+  .chat-panel-input{display:flex; gap:10px; padding:16px; border-top:1px solid var(--glass-border);}
+  .chat-panel-input input{flex:1; padding:11px 15px; border-radius:100px; border:1px solid var(--glass-border); background:rgba(255,255,255,0.04); color:var(--text); outline:none;}
+  .empty-state{color:var(--text-dim); font-size:14px; text-align:center; padding:60px 20px;}
+
+  .report-form{border-radius:var(--radius-md); padding:22px; max-width:560px; margin-bottom:26px;}
+  .report-item{border-radius:var(--radius-sm); padding:16px 18px; margin-bottom:10px;}
+  .report-item b{display:block; margin-bottom:4px; font-size:14.5px;}
+  .report-item p{margin:0 0 6px; font-size:13.5px; color:var(--text-dim); line-height:1.5;}
+  .report-item span{font-size:11.5px; color:var(--text-dim);}
+  .panel-lead{margin:-12px 0 20px; color:var(--text-dim); font-size:13.5px;}
+  .report-item{border-left:2px solid var(--accent);}
+  .report-item .report-meta{display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .report-source{color:var(--accent);}
+  .network-summary{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:18px;}
+  .network-card{padding:18px; border-radius:var(--radius-md);}
+  .network-card b,.network-card span{display:block;}
+  .network-card b{font-size:21px; margin-bottom:5px;}
+  .network-card span{font-size:12px; color:var(--text-dim);}
+  .server-row{display:flex; justify-content:space-between; gap:16px; align-items:center; padding:14px 16px; border-bottom:1px solid var(--glass-border);}
+  .server-row:last-child{border-bottom:0;}
+  .server-row b,.server-row span{display:block;}
+  .server-row span{font-size:12px; color:var(--text-dim); margin-top:4px;}
+  .promo-line{display:grid; grid-template-columns:1.2fr 1fr 1fr 100px 130px; gap:8px; align-items:center; padding:12px 0; border-bottom:1px solid var(--glass-border);}
+  .promo-line input,.promo-line select{min-width:0; padding:9px; border:1px solid var(--glass-border); border-radius:9px; background:rgba(255,255,255,.04); color:var(--text);}
+  @media (max-width:760px){.network-summary{grid-template-columns:1fr;}.promo-line{grid-template-columns:1fr 1fr;}}
+  .inline-edit{width:100%; min-width:100px; padding:8px 9px; border:1px solid var(--glass-border); border-radius:9px; background:rgba(255,255,255,.04); color:var(--text); font:12px inherit;}
+  .inline-save{min-height:34px; padding:7px 11px; font-size:12px;}
+  .brand-lockup{display:flex; align-items:center; gap:10px;}
+  .brand-mark{width:28px; height:28px; border-radius:9px; display:grid; place-items:center; background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow:0 5px 16px rgba(124,159,255,.35);}
+  .brand-mark::before{content:""; width:10px; height:10px; border:2px solid #0a0e27; border-radius:3px; transform:rotate(45deg);}
+  .nav-item svg,.logout svg{width:18px; height:18px; flex:0 0 18px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;}
+  .nav-item.active{box-shadow:inset 3px 0 0 var(--accent);}
+  .logout{display:flex; align-items:center; gap:10px;}
+</style>
+</head>
+<body>
+<canvas id="network-canvas" aria-hidden="true"></canvas>
+
+<div id="login-screen">
+  <div class="login-card glass">
+    <h1>Вход в админ-панель</h1>
+    <p>Доступ только для администраторов Jet VPN</p>
+    <div class="err" id="login-err"></div>
+    <div class="field"><label>Email</label><input type="email" id="admin-email" placeholder="admin@jetvpn.example"></div>
+    <div class="field"><label>Пароль</label><input type="password" id="admin-password" placeholder="••••••••"></div>
+    <button class="btn btn-primary" onclick="adminLogin()">Войти</button>
+  </div>
+</div>
+
+<div id="app-screen">
+  <div class="sidebar glass">
+    <h1 class="brand-lockup"><img class="brand-mark" src="logo.svg" alt="Jet VPN"><span>Jet VPN</span></h1>
+    <div class="nav-item active" data-panel="tickets" onclick="showPanel('tickets')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4h0A2.5 2.5 0 0 1 4 13.5z"/><path d="M8 8h8M8 11.5h5"/></svg><span>Поддержка</span></div>
+    <div class="nav-item" data-panel="users" onclick="showPanel('users')"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0M18 5.5a3 3 0 0 1 0 5.5M19 14a5 5 0 0 1 2 4"/></svg><span>Пользователи</span></div>
+    <div class="nav-item" data-panel="reports" onclick="showPanel('reports')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6M9 18h4"/></svg><span>Репорты</span></div>
+    <div class="nav-item" data-panel="settings" onclick="showPanel('settings')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="11" cy="18" r="2"/></svg><span>Настройки</span></div>
+    <div class="nav-item" data-panel="admins" onclick="showPanel('admins')"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 11h5M18.5 8.5v5"/></svg><span>Администраторы</span></div>
+    <div class="nav-item" data-panel="servers" onclick="showPanel('servers')"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><path d="M8 7h.01M8 17h.01"/></svg><span>Серверы</span></div>
+    <div class="nav-item" data-panel="promos" onclick="showPanel('promos')"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8a2 2 0 0 1 2-2h12l2 4-2 4H6a2 2 0 0 1-2-2z"/><path d="M8 10h.01M12 10h4"/></svg><span>Промокоды</span></div>
+    <div class="spacer"></div>
+    <div class="logout" onclick="adminLogout()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4H5v16h5M14 8l4 4-4 4M9 12h9"/></svg><span>Выйти</span></div>
+  </div>
+
+  <div class="main">
+    <!-- Поддержка -->
+    <div class="panel active" id="panel-tickets">
+      <h2>Онлайн-поддержка</h2>
+      <div class="tickets-layout">
+        <div class="ticket-list glass" id="ticket-list"></div>
+        <div class="chat-panel glass" id="chat-panel">
+          <div class="empty-state">Выберите обращение слева</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Пользователи -->
+    <div class="panel" id="panel-users">
+      <h2>Пользователи</h2>
+      <div class="table-wrap glass">
+        <table>
+          <thead><tr><th>Email</th><th>Тариф</th><th>Тест до</th><th>VPN-клиент</th><th>Регистрация</th><th>Изменить</th></tr></thead>
+          <tbody id="users-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Репорты -->
+    <div class="panel" id="panel-reports">
+      <h2>Репорты</h2>
+      <p class="panel-lead">Сообщения от пользователей появляются здесь автоматически.</p>
+      <div id="reports-list"></div>
+    </div>
+
+    <div class="panel" id="panel-settings">
+      <h2>Настройки сайта</h2>
+      <div class="report-form glass admin-form">
+        <div class="field"><label>Логотип</label><input id="setting-logo"></div>
+        <div class="field"><label>Ссылка на Telegram-бота</label><input id="setting-bot"></div>
+        <div class="field"><label>Дней тестового периода</label><input id="setting-trial" type="number" min="1" max="90"></div>
+        <div class="field"><label>Тексты сайта (JSON)</label><textarea id="setting-texts" rows="6" placeholder='{"heroEyebrow":"...","heroTitle":"..."}'></textarea></div>
+        <div class="field"><label>Подписки (JSON)</label><textarea id="setting-plans" rows="14" placeholder='[{"id":"1m-3","period":"1 месяц","months":1,"devices":3,"price":100}]'></textarea></div>
+        <button class="btn btn-primary" onclick="saveSettings()">Сохранить всё</button><span id="settings-status"></span>
+      </div>
+
+      <div class="report-form glass admin-form">
+        <h3 style="margin:0 0 14px; font-size:18px;">Список тарифов</h3>
+        <div class="subscription-manager" id="subscription-manager"></div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-admins">
+      <h2>Администраторы</h2>
+      <div class="report-form glass admin-form"><div class="field"><label>Имя</label><input id="new-admin-name"></div><div class="field"><label>Email</label><input id="new-admin-email" type="email"></div><div class="field"><label>Пароль</label><input id="new-admin-password" type="password"></div><div class="field"><label>Уровень</label><select id="new-admin-role"><option value="junior">Младший</option><option value="senior">Старший</option></select></div><button class="btn btn-primary" onclick="createAdmin()">Создать аккаунт</button><span id="admins-status"></span></div>
+      <div id="admins-list"></div>
+    </div>
+
+    <div class="panel" id="panel-servers">
+      <h2>Серверы и пинги</h2>
+      <div class="network-summary"><div class="network-card glass"><b id="network-ping">—</b><span>ping до панели 3x-ui</span></div><div class="network-card glass"><b id="network-count">—</b><span>серверов / inbound</span></div><div class="network-card glass"><b id="network-state">Проверка</b><span>состояние панели</span></div></div>
+      <div id="servers-list" class="glass"></div>
+      <button class="btn btn-ghost" onclick="loadNetwork()" style="margin-top:14px;">Обновить данные</button>
+    </div>
+
+    <div class="panel" id="panel-promos">
+      <h2>Промокоды и акции</h2>
+      <div class="report-form glass admin-form"><div class="promo-line"><input id="promo-new-code" placeholder="Код, например VIP30"><select id="promo-new-type"><option value="trial_days">Дни триала</option><option value="discount_percent">Скидка %</option><option value="plan">Тариф</option></select><input id="promo-new-value" placeholder="Значение"><input id="promo-new-limit" type="number" min="0" placeholder="Лимит"><button class="btn btn-primary" onclick="createPromo()">Создать</button></div><span id="promo-admin-status"></span><div id="promos-list"></div></div>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="network-bg.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
