@@ -17,6 +17,6 @@ services:
       - key: ADMIN_EMAIL
         value: admin@jetvpn.local
       - key: ADMIN_PASSWORD
-        value: admin123
+        sync: false
       - key: SITE_URL
         value: https://your-app-name.onrender.com
