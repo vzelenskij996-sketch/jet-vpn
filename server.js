@@ -14,10 +14,21 @@ const xui = require('./data/xui');
 
 const app = express();
 const server = http.createServer(app);
-const ORIGIN = process.env.SITE_URL || '*';
-const io = new Server(server, { cors: { origin: ORIGIN } });
 
-app.use(cors({ origin: ORIGIN }));
+// CORS: по умолчанию разрешаем запросы с любого origin, чтобы сайт и регистрация
+// работали где угодно — на Render, на своём домене, в Codespaces и локально.
+// Если нужен строгий список, перечислите адреса в SITE_URL через запятую, например:
+//   SITE_URL=https://jetvpn.ru,https://www.jetvpn.ru
+const allowedOrigins = (process.env.SITE_URL || '')
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean);
+
+const corsOrigin = allowedOrigins.length === 0 ? true : allowedOrigins;
+
+const io = new Server(server, { cors: { origin: corsOrigin } });
+
+app.use(cors({ origin: corsOrigin }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'), {
   setHeaders: (res, filePath) => {

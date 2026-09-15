@@ -276,19 +276,8 @@ async function applyPromo(){
 }
 
 // ---------------- Тема ----------------
-function initTheme(){
-  const saved = localStorage.getItem('nx_theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', saved);
-  document.getElementById('theme-toggle').textContent = saved === 'light' ? '☀️' : '🌙';
-}
-function toggleTheme(){
-  const current = document.documentElement.getAttribute('data-theme') || 'dark';
-  const next = current === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('nx_theme', next);
-  document.getElementById('theme-toggle').textContent = next === 'light' ? '☀️' : '🌙';
-}
-initTheme();
+// Переключатель тем убран: сайт всегда в тёмной (чёрной) теме.
+document.documentElement.setAttribute('data-theme', 'dark');
 
 async function loadPublicSettings(){
   try{

@@ -1,7 +1,7 @@
 services:
   - type: web
     name: jet-vpn
-    env: node
+    runtime: node
     plan: free
     region: frankfurt
     buildCommand: npm install
@@ -10,13 +10,14 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL
         value: admin@jetvpn.local
       - key: ADMIN_PASSWORD
         sync: false
-      - key: SITE_URL
-        value: https://your-app-name.onrender.com
+      # SITE_URL намеренно НЕ задан: Render сам подставляет PORT, а адрес сайта
+      # становится известен только после первого деплоя. Пока переменная пуста,
+      # сервер разрешает запросы с любого origin — сайт работает сразу.
+      # Позже впишите реальный адрес: Dashboard -> Environment ->
+      #   SITE_URL = https://<имя-сервиса>.onrender.com
