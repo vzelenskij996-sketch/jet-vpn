@@ -1,0 +1,4 @@
+# Shell-скрипты должны иметь LF-переводы строк:
+# локально у пользователя core.autocrlf=true (Windows), а Codespaces — Linux,
+# и CRLF в .sh приведёт к ошибке "bad interpreter".
+*.sh text eol=lf
