@@ -1,0 +1,513 @@
+{
+  "users": [
+    {
+      "id": "93537928-a936-43e6-99d2-9c07178a439d",
+      "email": "dzejhane@gmail.com",
+      "passwordHash": "$2a$10$TxJf8q0KJ9LHCiiu0AD7I.7YePKQyQQgQ.ucB3erOY37L2Nbwr1O.",
+      "plan": "1 месяц / 6 устройств",
+      "trialUntil": null,
+      "xuiClientId": null,
+      "createdAt": "2026-09-15T08:55:29.805Z",
+      "subscriptionId": "1m-6",
+      "accountId": "54372",
+      "devices": [],
+      "activity": [
+        {
+          "id": "7c92f2aa-1383-460c-9fcb-d0a9bca92ff0",
+          "type": "freeze",
+          "text": "Подписка заморожена",
+          "createdAt": "2026-09-15T17:29:13.698Z"
+        },
+        {
+          "id": "7c6345dc-0ff6-45d6-ae16-ae1559dbb31a",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 6 устройств",
+          "createdAt": "2026-09-15T17:31:19.658Z"
+        },
+        {
+          "id": "b5d33c08-011d-4fd4-932c-fb64e94ca921",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 6 устройств",
+          "createdAt": "2026-09-15T17:31:37.098Z"
+        },
+        {
+          "id": "0fc57301-c8f0-4aab-8755-a9694188fb65",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 6 устройств",
+          "createdAt": "2026-09-15T17:32:42.965Z"
+        },
+        {
+          "id": "5b6604b3-bdf9-4edf-a1f4-62865c88a02c",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 6 устройств",
+          "createdAt": "2026-09-15T17:33:18.997Z"
+        },
+        {
+          "id": "13fdaa14-58c6-4e98-99aa-7777ca111f09",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 6 устройств",
+          "createdAt": "2026-09-15T17:34:21.057Z"
+        },
+        {
+          "id": "9ca421bc-5b90-4df2-ac28-4bc7dd485583",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 6 устройств",
+          "createdAt": "2026-09-15T17:34:27.552Z"
+        },
+        {
+          "id": "37f65fdf-d536-40c6-a8fa-8edfc36b8177",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 6 устройств",
+          "createdAt": "2026-09-15T17:34:34.469Z"
+        },
+        {
+          "id": "5df9a09f-f876-404c-8acc-5e11762fbb7e",
+          "type": "freeze",
+          "text": "Подписка заморожена",
+          "createdAt": "2026-09-15T20:07:15.941Z"
+        }
+      ],
+      "subscriptionFrozen": true,
+      "subscriptionFrozenAt": "2026-09-15T20:07:15.934Z",
+      "usedGB": 0,
+      "subscriptionUntil": "2027-04-13T17:31:19.655Z"
+    },
+    {
+      "id": "32d47d72-bcc0-4711-9fab-5c3146908d5d",
+      "email": "check_4eea69ff@local.test",
+      "passwordHash": "$2a$10$9N7/OpRvp75a0SwBzHhnT.RdZmDB6pfUeid5oklvhimi6M63ynTsu",
+      "plan": null,
+      "trialUntil": null,
+      "xuiClientId": null,
+      "createdAt": "2026-09-15T09:18:46.398Z",
+      "accountId": "75512",
+      "devices": [],
+      "activity": [],
+      "subscriptionFrozen": false,
+      "subscriptionFrozenAt": null,
+      "usedGB": 0
+    },
+    {
+      "id": "1f7f16da-7458-4960-ae24-099b06ed29e7",
+      "email": "sub_dc125f1a@local.test",
+      "passwordHash": "$2a$10$h54ZJYo9CXc/YwWetvaeY.ztyM/aRoYqgyEd1tr2whGD1vyY/mYRG",
+      "plan": null,
+      "subscriptionId": "6m-6",
+      "trialUntil": null,
+      "xuiClientId": null,
+      "createdAt": "2026-09-15T09:40:36.623Z",
+      "accountId": "74469",
+      "devices": [],
+      "activity": [],
+      "subscriptionFrozen": false,
+      "subscriptionFrozenAt": null,
+      "usedGB": 0
+    },
+    {
+      "id": "46043595-a549-4e94-a887-1b2091105df6",
+      "email": "verifyb9a7b063@example.com",
+      "passwordHash": "$2a$10$p16z4mf9YHv9kmAyO3/dJes6.NDoMup9erk7zs0ixb2HKALrCGUH6",
+      "plan": null,
+      "subscriptionId": "1m-3",
+      "trialUntil": null,
+      "xuiClientId": null,
+      "createdAt": "2026-09-15T16:39:17.716Z",
+      "accountId": "94709",
+      "devices": [],
+      "activity": [],
+      "subscriptionFrozen": false,
+      "subscriptionFrozenAt": null,
+      "usedGB": 0
+    },
+    {
+      "id": "c389e0f4-e3ba-4cb1-b1b5-dc57d7cba4cc",
+      "email": "verify53397821@example.com",
+      "passwordHash": "$2a$10$nvGkoe0Oj32AuIp0fkL9HOthZHhpDaCA2ltXV29/JoDb6YDgp90kq",
+      "plan": "3 месяца / 6 устройств",
+      "subscriptionId": "3m-6",
+      "trialUntil": null,
+      "xuiClientId": null,
+      "createdAt": "2026-09-15T16:40:13.016Z",
+      "accountId": "23677",
+      "devices": [],
+      "activity": [],
+      "subscriptionFrozen": false,
+      "subscriptionFrozenAt": null,
+      "usedGB": 0
+    },
+    {
+      "id": "57e7ad87-e2ba-4d01-995a-c309900cc19a",
+      "email": "dashboard1789493150135@example.com",
+      "passwordHash": "$2a$10$SqocdlBWqk4soPiGFpaYGeOSm7WPV7H4mZCDdECxlepCKr/DBY686",
+      "plan": null,
+      "subscriptionId": null,
+      "trialUntil": null,
+      "xuiClientId": null,
+      "createdAt": "2026-09-15T17:25:50.301Z",
+      "accountId": "32143",
+      "devices": [],
+      "activity": [],
+      "subscriptionFrozen": false,
+      "subscriptionFrozenAt": null,
+      "usedGB": 0
+    },
+    {
+      "id": "38203d45-e14b-45ff-b679-4fdbc5344c4e",
+      "accountId": "41135",
+      "email": "dashboard1789493174393@example.com",
+      "passwordHash": "$2a$10$R.xtOC8f/ApUJke.bVhgK.lYRKWYTsoVYNWDiLXQU72PdZFdh4rTC",
+      "plan": null,
+      "subscriptionId": null,
+      "trialUntil": null,
+      "xuiClientId": null,
+      "subscriptionUntil": null,
+      "subscriptionFrozen": false,
+      "usedGB": 0,
+      "devices": [],
+      "activity": [
+        {
+          "id": "95b9810b-4e0f-4327-87dd-b94d8f8e51ac",
+          "type": "account",
+          "text": "Аккаунт создан",
+          "createdAt": "2026-09-15T17:26:14.554Z"
+        }
+      ],
+      "createdAt": "2026-09-15T17:26:14.554Z",
+      "subscriptionFrozenAt": null
+    },
+    {
+      "id": "dc381d3c-9773-431f-840b-68fab614ed4e",
+      "accountId": "94916",
+      "email": "flow1789493210218@example.com",
+      "passwordHash": "$2a$10$yuUagapHb2RbBAPRTRaSOOGVA0eOF4G4f8SgOW04oZf2KEjtfvSji",
+      "plan": "1 месяц / 3 устройств",
+      "subscriptionId": "1m-3",
+      "trialUntil": null,
+      "xuiClientId": null,
+      "subscriptionUntil": "2026-10-15T17:26:50.343Z",
+      "subscriptionFrozen": true,
+      "usedGB": 0,
+      "devices": [],
+      "activity": [
+        {
+          "id": "c73e7713-e412-47a8-88a0-12f9702a405e",
+          "type": "account",
+          "text": "Аккаунт создан",
+          "createdAt": "2026-09-15T17:26:50.331Z"
+        },
+        {
+          "id": "62a7d627-dbea-4ee0-8ea3-1f9bc7b8ca35",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 3 устройств",
+          "createdAt": "2026-09-15T17:26:50.345Z"
+        },
+        {
+          "id": "effad15c-961f-4503-823c-959eb7b47843",
+          "type": "freeze",
+          "text": "Подписка заморожена",
+          "createdAt": "2026-09-15T17:26:50.354Z"
+        }
+      ],
+      "createdAt": "2026-09-15T17:26:50.331Z",
+      "subscriptionFrozenAt": "2026-09-15T17:26:50.352Z"
+    },
+    {
+      "id": "04aa7352-70f0-436c-b0a9-49cf1b22558f",
+      "accountId": "91231",
+      "email": "local1789493543396@example.com",
+      "passwordHash": "$2a$10$8fp.Ks990mzcoqcZPGBuPOHsI6OJa3SFlHEKsyFwJYvvNLYlwyl62",
+      "plan": "1 месяц / 3 устройств",
+      "subscriptionId": "1m-3",
+      "trialUntil": null,
+      "xuiClientId": null,
+      "subscriptionUntil": "2026-10-15T17:32:23.544Z",
+      "subscriptionFrozen": false,
+      "usedGB": 0,
+      "devices": [],
+      "activity": [
+        {
+          "id": "e9e8ac05-6c0f-4309-a737-48c2855f6112",
+          "type": "account",
+          "text": "Аккаунт создан",
+          "createdAt": "2026-09-15T17:32:23.527Z"
+        },
+        {
+          "id": "a612e5bd-c16d-43cd-a627-cabc2648e37e",
+          "type": "subscription",
+          "text": "Подписка подключена: 1 месяц / 3 устройств",
+          "createdAt": "2026-09-15T17:32:23.548Z"
+        }
+      ],
+      "createdAt": "2026-09-15T17:32:23.527Z",
+      "subscriptionFrozenAt": null
+    }
+  ],
+  "admins": [
+    {
+      "id": "admin_1789462646040",
+      "email": "admin@jetvpn.local",
+      "passwordHash": "$2a$10$TDiL6zphVpRNFvrTP6SPsOjA4i4vayxzY2ysMrufYIraEJsuStGse",
+      "name": "Главный админ",
+      "createdAt": "2026-09-15T08:57:26.040Z",
+      "role": "owner"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "e27217af-0a39-465a-be00-aaadf3c07e27",
+      "userEmail": "гость_jth4fg@web",
+      "status": "open",
+      "messages": [
+        {
+          "from": "user",
+          "text": "ПР",
+          "ts": "2026-09-15T08:59:05.242Z"
+        },
+        {
+          "from": "admin",
+          "text": "ПР",
+          "ts": "2026-09-15T08:59:14.581Z"
+        },
+        {
+          "from": "admin",
+          "text": "КАК ДЕЛА БРО",
+          "ts": "2026-09-15T08:59:20.284Z"
+        },
+        {
+          "from": "admin",
+          "text": "ТЕБЕ ПОМОЧЬ С ВПНОМ?",
+          "ts": "2026-09-15T08:59:26.394Z"
+        },
+        {
+          "from": "user",
+          "text": "кнш бро",
+          "ts": "2026-09-15T08:59:49.164Z"
+        },
+        {
+          "from": "user",
+          "text": "ьтьть",
+          "ts": "2026-09-15T09:42:51.306Z"
+        }
+      ],
+      "createdAt": "2026-09-15T08:59:05.242Z"
+    }
+  ],
+  "reports": [],
+  "settings": {
+    "logoText": "Jet VPN",
+    "botUrl": "https://t.me/jetvpnpro_bot",
+    "trialDays": 7,
+    "heroEyebrow": "Более 100 клиентов доверяют нам ежедневно",
+    "heroTitle": "Интернет без границ.",
+    "heroTitleAccent": "Приватность без вопросов.",
+    "heroDescription": "Быстрые сервера, собственная панель управления и честные тарифы — без логов, без ограничений скорости, без компромиссов.",
+    "plans": [
+      {
+        "id": "basic",
+        "name": "Базовый",
+        "price": 299,
+        "note": "Для одного устройства",
+        "features": [
+          "1 устройство",
+          "Базовые сервера",
+          "До 50 Мбит/с"
+        ]
+      },
+      {
+        "id": "standard",
+        "name": "Стандарт",
+        "price": 599,
+        "note": "Для семьи из 3–5 устройств",
+        "features": [
+          "5 устройств",
+          "Все сервера",
+          "Безлимитная скорость",
+          "Приоритетная поддержка"
+        ]
+      },
+      {
+        "id": "pro",
+        "name": "Про",
+        "price": 1290,
+        "note": "Для продвинутых сценариев",
+        "features": [
+          "10 устройств",
+          "Выделенный IP",
+          "Безлимитная скорость",
+          "API-доступ"
+        ]
+      }
+    ],
+    "subscriptions": [
+      {
+        "id": "1m-3",
+        "period": "1 месяц",
+        "months": 1,
+        "devices": 3,
+        "price": 100,
+        "name": "1 месяц",
+        "currency": "RUB",
+        "days": 30,
+        "discount": 0,
+        "badge": "",
+        "order": 1,
+        "active": true
+      },
+      {
+        "id": "1m-6",
+        "period": "1 месяц",
+        "months": 1,
+        "devices": 6,
+        "price": 185,
+        "name": "1 месяц",
+        "currency": "RUB",
+        "days": 30,
+        "discount": 0,
+        "badge": "",
+        "order": 2,
+        "active": true
+      },
+      {
+        "id": "1m-9",
+        "period": "1 месяц",
+        "months": 1,
+        "devices": 9,
+        "price": 270,
+        "name": "1 месяц",
+        "currency": "RUB",
+        "days": 30,
+        "discount": 0,
+        "badge": "",
+        "order": 3,
+        "active": true
+      },
+      {
+        "id": "3m-3",
+        "period": "3 месяца",
+        "months": 3,
+        "devices": 3,
+        "price": 300,
+        "name": "3 месяца",
+        "currency": "RUB",
+        "days": 90,
+        "discount": 0,
+        "badge": "",
+        "order": 4,
+        "active": true
+      },
+      {
+        "id": "3m-6",
+        "period": "3 месяца",
+        "months": 3,
+        "devices": 6,
+        "price": 465,
+        "name": "3 месяца",
+        "currency": "RUB",
+        "days": 90,
+        "discount": 0,
+        "badge": "",
+        "order": 5,
+        "active": true
+      },
+      {
+        "id": "3m-9",
+        "period": "3 месяца",
+        "months": 3,
+        "devices": 9,
+        "price": 630,
+        "name": "3 месяца",
+        "currency": "RUB",
+        "days": 90,
+        "discount": 0,
+        "badge": "",
+        "order": 6,
+        "active": true
+      },
+      {
+        "id": "6m-3",
+        "period": "6 месяцев",
+        "months": 6,
+        "devices": 3,
+        "price": 600,
+        "name": "6 месяцев",
+        "currency": "RUB",
+        "days": 180,
+        "discount": 0,
+        "badge": "",
+        "order": 7,
+        "active": true
+      },
+      {
+        "id": "6m-6",
+        "period": "6 месяцев",
+        "months": 6,
+        "devices": 6,
+        "price": 885,
+        "name": "6 месяцев",
+        "currency": "RUB",
+        "days": 180,
+        "discount": 0,
+        "badge": "",
+        "order": 8,
+        "active": true
+      },
+      {
+        "id": "6m-9",
+        "period": "6 месяцев",
+        "months": 6,
+        "devices": 9,
+        "price": 1170,
+        "name": "6 месяцев",
+        "currency": "RUB",
+        "days": 180,
+        "discount": 0,
+        "badge": "",
+        "order": 9,
+        "active": true
+      },
+      {
+        "id": "12m-3",
+        "period": "12 месяцев",
+        "months": 12,
+        "devices": 3,
+        "price": 1200,
+        "name": "12 месяцев",
+        "currency": "RUB",
+        "days": 360,
+        "discount": 0,
+        "badge": "",
+        "order": 10,
+        "active": true
+      },
+      {
+        "id": "12m-6",
+        "period": "12 месяцев",
+        "months": 12,
+        "devices": 6,
+        "price": 1725,
+        "name": "12 месяцев",
+        "currency": "RUB",
+        "days": 360,
+        "discount": 0,
+        "badge": "",
+        "order": 11,
+        "active": true
+      },
+      {
+        "id": "12m-9",
+        "period": "12 месяцев",
+        "months": 12,
+        "devices": 9,
+        "price": 2250,
+        "name": "12 месяцев",
+        "currency": "RUB",
+        "days": 360,
+        "discount": 0,
+        "badge": "",
+        "order": 12,
+        "active": true
+      }
+    ]
+  },
+  "promos": []
+}
